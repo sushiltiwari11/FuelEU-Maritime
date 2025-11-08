@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* === Base Theme Tokens (Light) === */
+@theme {
+  --color-bg: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-primary: #2563eb;
+  --color-secondary: #64748b;
+  --color-accent: #16a34a;
+  --color-border: #e2e8f0;
+  --color-text: #1e293b;
+  --color-subtext: #475569;
+
+  --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 10px rgba(96, 165, 250, 0.4);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* === Dark Theme Overrides === */
+:root.dark {
+  --color-bg: #0e1117;
+  --color-surface: #1b1f27;
+  --color-primary: #60a5fa;
+  --color-secondary: #94a3b8;
+  --color-accent: #22c55e;
+  --color-border: #2d3748;
+  --color-text: #f8fafc;
+  --color-subtext: #cbd5e1;
+
+  --shadow-soft: 0 6px 20px rgba(255, 255, 255, 0.05);
+  --shadow-glow: 0 0 10px rgba(96, 165, 250, 0.4);
+}
+
+/* === Base Layer === */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    transition:
+      background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: white;
+  }
+}
+
+/* === Utility Animations === */
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  .animate-scaleIn {
+    animation: scaleIn 0.4s ease forwards;
+  }
+}
+
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
